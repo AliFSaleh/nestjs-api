@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigSchemaValidation } from './config.schema';
 import { DataSource } from 'typeorm';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -25,10 +26,11 @@ import { DataSource } from 'typeorm';
         synchronize: false,
         
         entities: ['dist/**/*.entity{.ts,.js}'],
-        migrations: ['src/migrations/**/*.ts'],
+        migrations: ['dist/migrations/*{.ts, .js}'],
       }),
     }),
     UsersModule,
+    AuthModule,
   ],
   
   controllers: [],

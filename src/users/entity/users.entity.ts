@@ -22,7 +22,9 @@ export class User {
     @Column()
     name: string
 
-    @Column()
+    @Column({
+        unique: true
+    })
     email: string
 
     @Column()
@@ -45,11 +47,6 @@ export class User {
 
     @UpdateDateColumn()
     updated_at: Date
-
-    @BeforeInsert()
-    async hashPassword () {
-        this.password = await bcrypt.hash(this.password, 12)
-    }
 
     static async comparePassword (password: string, hashedPassword: string) {
         return await bcrypt.compare(password, hashedPassword)

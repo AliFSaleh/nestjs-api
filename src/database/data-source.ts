@@ -1,5 +1,5 @@
-// import * as dotenv from 'dotenv';
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { DataSource } from 'typeorm';
 
 export default new DataSource({
