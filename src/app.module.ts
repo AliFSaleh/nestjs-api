@@ -3,11 +3,11 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigSchemaValidation } from './config.schema';
+import { DataSource } from 'typeorm';
 
 
 @Module({
   imports: [
-    UsersModule,
     ConfigModule.forRoot({ 
       envFilePath: '.env',
       validationSchema: ConfigSchemaValidation
@@ -22,13 +22,18 @@ import { ConfigSchemaValidation } from './config.schema';
         username: configService.get('POSTGRES_USER'),
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
-        entities: [],
-        synchronize: true,
+        synchronize: false,
+        
+        entities: ['dist/**/*.entity{.ts,.js}'],
+        migrations: ['src/migrations/**/*.ts'],
       }),
     }),
+    UsersModule,
   ],
   
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor (private dataSource: DataSource) {}
+}
