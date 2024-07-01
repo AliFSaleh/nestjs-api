@@ -1,5 +1,4 @@
 import { 
-    BeforeInsert,
     Column,
     CreateDateColumn,
     Entity,
@@ -7,6 +6,7 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import * as bcrypt from 'bcrypt'
+import { Exclude } from "class-transformer";
 
 export enum RoleEnumType {
     ADMIN = 'admin',
@@ -27,6 +27,7 @@ export class User {
     })
     email: string
 
+    @Exclude()
     @Column()
     password: string
 

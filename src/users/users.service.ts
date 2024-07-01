@@ -21,6 +21,14 @@ export class UsersService {
         return user
     }
 
+    async findMe(id) {
+        const user = await this.userRepository.findOneBy(id)
+        if(!user)
+            throw new UnauthorizedException('User not found')
+
+        return user
+    }
+
     async createUser (data: CreateUserDto) {
         data.password = await bcrypt.hash(data.password, 12) 
         const user = await this.userRepository.save(data)
