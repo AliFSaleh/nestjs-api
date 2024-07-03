@@ -18,7 +18,7 @@ export class AuthService {
         if(!comparePassword)
             throw new UnauthorizedException('Password not match')
 
-        const payload = {sub: user.id, email: user.email}
+        const payload = {sub: user.id, email: user.email, role: user.role}
         const access_token = await this.jwtService.signAsync(payload)
 
         return {
