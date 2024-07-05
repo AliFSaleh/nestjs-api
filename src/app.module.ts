@@ -5,6 +5,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigSchemaValidation } from './config.schema';
 import { DataSource } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
+import { HostRequestsModule } from './host_requests/host_requests.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { multerOptions } from './config/multer.config';
 
 
 @Module({
@@ -29,8 +32,10 @@ import { AuthModule } from './auth/auth.module';
         migrations: ['dist/migrations/*{.ts, .js}'],
       }),
     }),
+    MulterModule.register(multerOptions),
     UsersModule,
     AuthModule,
+    HostRequestsModule,
   ],
   
   controllers: [],

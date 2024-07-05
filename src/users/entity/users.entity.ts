@@ -2,11 +2,13 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from "typeorm";
 import * as bcrypt from 'bcrypt'
 import { Exclude } from "class-transformer";
+import { HostRequest } from "src/host_requests/entity/host_requests.entity";
 
 export enum RoleEnumType {
     ADMIN = 'admin',
@@ -36,12 +38,15 @@ export class User {
         enum: RoleEnumType,
         default: RoleEnumType.USER
     })
-    role: RoleEnumType.USER
+    role: RoleEnumType
 
     @Column({
         default: 'default.png',
     })
     photo: string;
+
+    @OneToMany(() => HostRequest, (hostRequest) => hostRequest.user)
+    hostRequest: HostRequest
 
     @CreateDateColumn()
     created_at: Date
