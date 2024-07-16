@@ -9,6 +9,7 @@ import { Image } from './entity/images.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([RealEstate, Image]), UsersModule],
   controllers: [RealEstatesController],
-  providers: [RealEstatesService]
+  providers: [RealEstatesService],
+  exports: [RealEstatesService]
 })
 export class RealEstatesModule {}

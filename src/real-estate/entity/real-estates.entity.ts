@@ -9,6 +9,7 @@ import {
     PrimaryGeneratedColumn
 } from "typeorm";
 import { Image } from "./images.entity";
+import { Reservation } from "src/reservations/entity/reservations.entity";
 
 @Entity('real-estates')
 export class RealEstate {
@@ -62,4 +63,7 @@ export class RealEstate {
 
     @OneToMany(() => Image, (image) => image.real_estate, { eager: false })
     images: Image[]
+    
+    @OneToMany(() => Reservation, (reservations) => reservations.real_estate )
+    reservations: Reservation[]
 }

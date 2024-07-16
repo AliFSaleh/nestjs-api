@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt'
 import { Exclude } from "class-transformer";
 import { HostRequest } from "src/host_requests/entity/host_requests.entity";
 import { RealEstate } from "src/real-estate/entity/real-estates.entity";
+import { Reservation } from "src/reservations/entity/reservations.entity";
 
 export enum RoleEnumType {
     ADMIN = 'admin',
@@ -51,6 +52,9 @@ export class User {
 
     @OneToMany(() => RealEstate, (real_estate) => real_estate.user)
     real_estates: RealEstate[]
+
+    @OneToMany(() => Reservation, (reservations) => reservations.user )
+    reservations: Reservation[]
 
     @CreateDateColumn()
     created_at: Date

@@ -10,6 +10,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { multerOptions } from './config/multer.config';
 import { CategoriesModule } from './categories/categories.module';
 import { RealEstatesModule } from './real-estate/real-estates.module';
+import { ReservationsModule } from './reservations/reservations.module';
 
 
 @Module({
@@ -40,6 +41,7 @@ import { RealEstatesModule } from './real-estate/real-estates.module';
     HostRequestsModule,
     CategoriesModule,
     RealEstatesModule,
+    ReservationsModule,
   ],
   
   controllers: [],
