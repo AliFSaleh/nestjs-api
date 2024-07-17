@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
 import { createReservationDto } from './dto/reservations.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
@@ -10,6 +10,15 @@ export class ReservationsController {
     constructor (
         private reservationsService: ReservationsService
     ) {}
+
+    @UseGuards(AuthGuard)
+    @Roles(RoleEnumType.USER)
+    @Get('/')
+    findReservations(
+        @Req() req
+    ){
+        return this.reservationsService.findReservations(req.user.sub)
+    }
 
     @UseGuards(AuthGuard)
     @Roles(RoleEnumType.USER)

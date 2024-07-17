@@ -17,6 +17,14 @@ export class ReservationsService {
         private userService: UsersService,
     ) {}
 
+    async findReservations(user_id: number) {
+        return await this.reservationRepository.find({
+            where: {
+                user: {id: user_id}
+            }
+        })
+    }
+
     async createReservation (data: createReservationDto, user_id: number) {
         const real_estate = await this.realEstateService.findRealEstate(data.real_estate_id)
         if(!real_estate)
