@@ -1,11 +1,10 @@
 import { Controller, Get, Param, ParseFilePipe, Post, Query, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
-import { HostRequestsService } from './host_requests.service';
+import { HostRequestsService } from './host-requests.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/config/multer.config';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RoleEnumType } from 'src/users/entity/users.entity';
-import { StatusEnumType } from './entity/host_requests.entity';
 import { SearchHostRequestsDto } from './dto';
 
 @Controller('api/host-requests')

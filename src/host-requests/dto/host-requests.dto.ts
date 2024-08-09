@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import { StatusEnumType } from "../entity/host_requests.entity";
+import { StatusEnumType } from "../entity/host-requests.entity";
 
 export class CreateHostRequestDto {
     @IsNotEmpty()

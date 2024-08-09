@@ -1,6 +1,6 @@
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { HostRequest, StatusEnumType } from './entity/host_requests.entity';
+import { HostRequest, StatusEnumType } from './entity/host-requests.entity';
 import { FindManyOptions, Repository } from 'typeorm';
 import { UsersService } from 'src/users/users.service';
 import { RoleEnumType, User } from 'src/users/entity/users.entity';

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { HostRequestsController } from './host_requests.controller';
-import { HostRequestsService } from './host_requests.service';
+import { HostRequestsController } from './host-requests.controller';
+import { HostRequestsService } from './host-requests.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { HostRequest } from './entity/host_requests.entity';
+import { HostRequest } from './entity/host-requests.entity';
 import { UsersModule } from 'src/users/users.module';
 
 @Module({
